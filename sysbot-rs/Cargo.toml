@@ -1,0 +1,48 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/sysbot_base",
+    "crates/sysbot_api",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["SysBot.rs Contributors"]
+license = "AGPL-3.0"
+repository = "https://github.com/0xS4D/SysBot.NET"
+
+[workspace.dependencies]
+# Async Runtime
+tokio = { version = "1.42", features = ["full"] }
+
+# Web Framework
+axum = "0.8"
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error Handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Async Utilities
+async-trait = "0.1"
+futures = "0.3"
+
+# Testing
+tokio-test = "0.4"
+
+# USB (for future)
+# nusb = "0.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
